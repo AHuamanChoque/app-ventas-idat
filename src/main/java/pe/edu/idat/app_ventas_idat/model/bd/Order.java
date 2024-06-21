@@ -24,5 +24,10 @@ public class Order {
     private String shippostalcode;
     private String shipregion;
     private Integer shipvia;
-
+    @ManyToOne
+    @JoinColumn (name = "employeeid")
+    private Employee employee;
+    @ManyToOne
+    @JoinColumn (name = "customerid")
+    private Customer customer;
 }
