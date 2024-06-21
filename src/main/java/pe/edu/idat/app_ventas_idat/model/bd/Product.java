@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -25,4 +28,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "categoryid")
     private Category category;
+    @OneToMany(mappedBy = "product",
+    cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<OrderDetail> orders = new HashSet<>();
 }
